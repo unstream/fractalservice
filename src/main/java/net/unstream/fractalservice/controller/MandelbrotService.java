@@ -29,11 +29,13 @@ public class MandelbrotService {
     MandelbrotFunction f = new MandelbrotFunction(maxIterations);
 
     Quad data = new Quad();
-    double length = fractal.getC1().getReal() - fractal.getC0().getReal();
-    double step = length / data.getWidth();
+    double width = fractal.getC1().getReal() - fractal.getC0().getReal();
+    double height = fractal.getC1().getImaginary() - fractal.getC0().getImaginary();
+    double xstep = width / data.getWidth();
+    double ystep = height / data.getWidth();
     for (int x = 0; x < data.getWidth(); x++) {
       for (int y = 0; y < data.getWidth(); y++) {
-        Complex z = fractal.getC0().add(new Complex(step * x, step * y));
+        Complex z = fractal.getC0().add(new Complex(xstep * x, ystep * y));
         double r = f.apply(z);
         data.setXY(x, y, r);
       }
