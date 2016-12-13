@@ -33,7 +33,7 @@ public class FractalService {
   @Produces("image/png")
   public Response getMandelbrot(
       @DefaultValue("-1.5") @QueryParam("c0") double c0,
-      @DefaultValue("-1") @QueryParam("ci0") double c0i,
+      @DefaultValue("-1") @QueryParam("c0i") double c0i,
       @DefaultValue("0.5") @QueryParam("c1") double c1,
       @DefaultValue("1") @QueryParam("c1i") double c1i) {
 
