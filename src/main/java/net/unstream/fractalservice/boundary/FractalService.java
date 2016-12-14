@@ -1,3 +1,15 @@
+/**
+ *
+ * Project:        Toll Collect
+ *
+ * adesso AG
+ * Rotherstr. 19
+ * 10245 Berlin
+ * Germany
+ * Tel. +49 (0)30 7262033-0
+ * Mail: office@adesso.de
+ * Web: http://www.adesso.de
+ */
 package net.unstream.fractalservice.boundary;
 
 import org.apache.commons.math3.complex.Complex;
@@ -20,6 +32,9 @@ import net.unstream.fractalservice.entity.Fractal;
 import net.unstream.fractalservice.entity.Quad;
 
 
+/**
+ * The Class FractalService.
+ */
 @RequestScoped
 @Path("/fractal")
 public class FractalService {
