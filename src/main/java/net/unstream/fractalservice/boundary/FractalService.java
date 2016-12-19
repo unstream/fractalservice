@@ -1,15 +1,3 @@
-/**
- *
- * Project:        Toll Collect
- *
- * adesso AG
- * Rotherstr. 19
- * 10245 Berlin
- * Germany
- * Tel. +49 (0)30 7262033-0
- * Mail: office@adesso.de
- * Web: http://www.adesso.de
- */
 package net.unstream.fractalservice.boundary;
 
 import org.apache.commons.math3.complex.Complex;
@@ -50,11 +38,13 @@ public class FractalService {
       @DefaultValue("-1.5") @QueryParam("c0") double c0,
       @DefaultValue("-1") @QueryParam("c0i") double c0i,
       @DefaultValue("0.5") @QueryParam("c1") double c1,
-      @DefaultValue("1") @QueryParam("c1i") double c1i) {
+      @DefaultValue("1") @QueryParam("c1i") double c1i,
+      @DefaultValue("100") @QueryParam("iterations") int iterations) {
 
     Fractal fractal = new Fractal();
     fractal.setC0(new Complex(c0, c0i));
     fractal.setC1(new Complex(c1, c1i));
+    fractal.setIterations(iterations);
 
     Quad data = fractalService.create(fractal);
     ImageService imageService = new ImageService();
