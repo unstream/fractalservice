@@ -18,7 +18,6 @@ public class MandelbrotService {
   // @Named("forkjoin")
   // private final FractalAlg alg = null;
 
-  private static int maxIterations = 100;
 
 
   public MandelbrotService() {
@@ -26,7 +25,7 @@ public class MandelbrotService {
 
   public Quad create(Fractal fractal) {
 
-    MandelbrotFunction f = new MandelbrotFunction(maxIterations);
+    MandelbrotFunction f = new MandelbrotFunction(fractal.getIterations());
 
     Quad data = new Quad();
     double width = fractal.getC1().getReal() - fractal.getC0().getReal();
