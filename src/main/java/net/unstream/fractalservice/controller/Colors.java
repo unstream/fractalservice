@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Colors {
 
-	private String [] colors = {"#000000", "#0080ff", "#30b0ff", "#ffffff"} ;
+  private String[] colors = {"#000000", "#0080ff", "#30b0ff", "#ff00ff"};
 
 	private int [] iterations = {0, 50, 100, 200};
 
