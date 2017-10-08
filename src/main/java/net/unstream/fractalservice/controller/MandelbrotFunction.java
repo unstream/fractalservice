@@ -1,8 +1,8 @@
 package net.unstream.fractalservice.controller;
 
-import java.util.function.Function;
-
 import org.apache.commons.math3.complex.Complex;
+
+import java.util.function.Function;
 
 public class MandelbrotFunction implements Function<Complex, Double>  {
 	final private int maxIterations;
@@ -28,7 +28,8 @@ public class MandelbrotFunction implements Function<Complex, Double>  {
 		if (i == maxIterations) {
 			nsmooth = i;
 		} else {
-			nsmooth = 1d + i - Math.log(Math.log(Math.sqrt(x*x + y*y)))/Math.log(2);
+      nsmooth = i;
+      // nsmooth = 1d + i - Math.log(Math.log(Math.sqrt(x * x + y * y))) / Math.log(2);
 		}
 		return nsmooth;
 	}
