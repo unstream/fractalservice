@@ -1,5 +1,7 @@
 package net.unstream.fractalservice.entity;
 
+import org.apache.commons.math3.complex.Complex;
+
 import lombok.Builder;
 import lombok.Data;
 
@@ -7,21 +9,22 @@ import lombok.Data;
 @Builder
 public class Quad {
 
-  final static private int width = 500;
+	final static private int width = 500;
 
-  public int getWidth() {
-    return width;
-  }
+	public int getWidth() {
+		return width;
+	}
 
-  final private Double[][] data = new Double[width][width];
+	final private Integer[][] data = new Integer[width][width];
+	final private Complex[][] zdata = new Complex[width][width];
 
-  public Double[][] getData() {
-    return data;
-  }
+	public void setXY(int x, int y, Integer d) {
+		data[x][y] = d;
+	}
 
-  public void setXY(int x, int y, Double d) {
-    data[x][y] = d;
-  }
-
+	public void setXYZ(int x, int y, Integer d, Complex z) {
+		data[x][y] = d;
+		zdata[x][y] = z;
+	}
 
 }

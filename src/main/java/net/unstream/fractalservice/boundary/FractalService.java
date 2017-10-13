@@ -121,15 +121,19 @@ public class FractalService {
       @DefaultValue("-1") @QueryParam("c0i") double c0i,
       @DefaultValue("0.5") @QueryParam("c1") double c1,
       @DefaultValue("1") @QueryParam("c1i") double c1i,
-      @DefaultValue("100") @QueryParam("iterations") int iterations) {
+      @DefaultValue("-1") @QueryParam("iterations") int iterations) {
 
     Fractal fractal = Fractal.builder()
         .c0(new Complex(c0, c0i))
         .c1(new Complex(c1, c1i))
         .iterations(iterations)
         .build();
-
-    Quad data = fractalService.create(fractal);
+    Quad data;
+    if (iterations != -1) {
+    	data = fractalService.create(fractal);
+    } else {
+    	data = fractalService.autostop(fractal);
+    }
     LongQuad longQuad = LongQuad.builder().name("Ingo").build();
     for (int x = 0; x < data.getWidth(); x++) {
       for (int y = 0; y < data.getWidth(); y++) {
