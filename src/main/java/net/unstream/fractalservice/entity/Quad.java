@@ -10,6 +10,7 @@ import lombok.Data;
 public class Quad {
 
 	final static private int width = 500;
+	private int maxIterations;
 
 	public int getWidth() {
 		return width;

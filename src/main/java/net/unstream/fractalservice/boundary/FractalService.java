@@ -121,12 +121,16 @@ public class FractalService {
       @DefaultValue("-1") @QueryParam("c0i") double c0i,
       @DefaultValue("0.5") @QueryParam("c1") double c1,
       @DefaultValue("1") @QueryParam("c1i") double c1i,
-      @DefaultValue("-1") @QueryParam("iterations") int iterations) {
+      @DefaultValue("0.01") @QueryParam("threshold") double threshold,
+      @DefaultValue("-1") @QueryParam("iterations") int iterations,
+      @DefaultValue("-1") @QueryParam("minIterations") int minIterations) {
 
     Fractal fractal = Fractal.builder()
         .c0(new Complex(c0, c0i))
         .c1(new Complex(c1, c1i))
         .iterations(iterations)
+        .minIterations(minIterations)
+        .threshold(threshold)
         .build();
     Quad data;
     if (iterations != -1) {

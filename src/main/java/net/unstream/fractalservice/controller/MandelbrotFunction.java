@@ -2,9 +2,6 @@ package net.unstream.fractalservice.controller;
 
 import org.apache.commons.math3.complex.Complex;
 
-import java.util.function.BiFunction;
-import java.util.function.Function;
-
 /**
  * Iterate the Mandelbrot function f(z) =  z^2 + c over the given number of iterations by returning f(f(...)).  
  * Using the result you can start iterating for further iterations.	

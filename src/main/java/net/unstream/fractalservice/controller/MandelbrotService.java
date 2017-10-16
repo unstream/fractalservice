@@ -14,8 +14,6 @@ public class MandelbrotService {
 
 	private static final Logger LOG = Logger.getLogger(MandelbrotService.class
 			.getName());
-	private static double THRESHOLD = 0.01;
-
 	public MandelbrotService() {
 	}
 
@@ -79,7 +77,18 @@ public class MandelbrotService {
 			i = i + max;
 			max = max * 2;
 			LOG.info("" + (lastIncomplete - incomplete));
-		} while ((lastIncomplete - incomplete)  > THRESHOLD * pixels);
+		} while ((fractal.getMinIterations() > i) 
+				|| (incomplete == pixels) 
+				|| ((lastIncomplete - incomplete) > fractal.getThreshold() * lastIncomplete));
+		//Set the unfinished points form 0 to maxiteration
+		for (int x = 0; x < quad.getWidth(); x++) {
+			for (int y = 0; y < quad.getWidth(); y++) {
+				if (quad.getData()[x][y] == 0) {
+					quad.setXY(x, y, i);
+				}
+			}
+		}
+		quad.setMaxIterations(i);
 		return quad;
 	}
 

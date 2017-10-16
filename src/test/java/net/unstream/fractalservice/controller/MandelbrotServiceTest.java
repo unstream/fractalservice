@@ -43,6 +43,29 @@ public class MandelbrotServiceTest {
 		writeTempImage(data, "auto");
 
 	}
+	
+	@Test
+	public void testAuto2() throws Exception {
+		Fractal fractal = Fractal.builder()
+				.c0(new Complex(-1.0236250000000002, -0.32675000000000004))
+				.c1(new Complex(-0.9923750000000002, -0.29550000000000004))
+				.iterations(500000)
+				.build();
+		Quad data = service.autostop(fractal);
+		writeTempImage(data, "auto");
+
+	}
+	@Test
+	public void testAuto3() throws Exception {
+		Fractal fractal = Fractal.builder()
+				.c0(new Complex(-1.06684375, -0.26885937499999996))
+				.c1(new Complex(-1.0629375, -0.26495312499999996))
+				.iterations(500000)
+				.build();
+		Quad data = service.autostop(fractal);
+		writeTempImage(data, "auto");
+
+	}
 
 	private void writeTempImage(Quad data, String name) throws FileNotFoundException,
 			IOException {
