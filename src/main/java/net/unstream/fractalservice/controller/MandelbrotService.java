@@ -17,26 +17,6 @@ public class MandelbrotService {
 	public MandelbrotService() {
 	}
 
-	public Quad create(Fractal fractal) {
-
-		MandelbrotFunctionOld f = new MandelbrotFunctionOld(fractal.getIterations());
-
-		Quad data = Quad.builder().build();
-		double width = fractal.getC1().getReal() - fractal.getC0().getReal();
-		double height = fractal.getC1().getImaginary()
-				- fractal.getC0().getImaginary();
-		double xstep = width / data.getWidth();
-		double ystep = height / data.getWidth();
-		for (int x = 0; x < data.getWidth(); x++) {
-			for (int y = 0; y < data.getWidth(); y++) {
-				Complex c0 = fractal.getC0().add(
-						new Complex(xstep * x, ystep * y));
-				data.setXY(x, y, f.apply(c0));
-			}
-		}
-		return data;
-	}
-
 	/**
 	 * Automatically stop when the fractal now longer changes much.
 	 */

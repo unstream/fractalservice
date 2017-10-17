@@ -20,17 +20,6 @@ public class MandelbrotServiceTest {
 	
 	MandelbrotService service = new MandelbrotService();
 	
-	@Test
-	public void testCreate() throws Exception {
-		Fractal fractal = Fractal.builder()
-				.c0(new Complex(-1.5, -1))
-				.c1(new Complex(0.5, 1))
-				.iterations(5000)
-				.build();
-		Quad data = service.create(fractal);
-		writeTempImage(data, "create");
-		
-	}
 
 	@Test
 	public void testAuto() throws Exception {
@@ -41,7 +30,6 @@ public class MandelbrotServiceTest {
 				.build();
 		Quad data = service.autostop(fractal);
 		writeTempImage(data, "auto");
-
 	}
 	
 	@Test
@@ -53,8 +41,8 @@ public class MandelbrotServiceTest {
 				.build();
 		Quad data = service.autostop(fractal);
 		writeTempImage(data, "auto");
-
 	}
+
 	@Test
 	public void testAuto3() throws Exception {
 		Fractal fractal = Fractal.builder()

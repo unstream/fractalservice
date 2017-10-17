@@ -1,14 +1,5 @@
 /**
  *
- * Project:        Toll Collect
- *
- * adesso AG
- * Rotherstr. 19
- * 10245 Berlin
- * Germany
- * Tel. +49 (0)30 7262033-0
- * Mail: office@adesso.de
- * Web: http://www.adesso.de
  */
 package net.unstream.fractalservice.boundary;
 
@@ -72,7 +63,7 @@ public class FractalService {
         .iterations(iterations)
         .build();
 
-    Quad data = fractalService.create(fractal);
+    Quad data = fractalService.autostop(fractal);
     ImageService imageService = new ImageService();
     byte[] image = imageService.createImage(data);
     ResponseBuilder response = Response.ok(image);
@@ -95,7 +86,7 @@ public class FractalService {
         .iterations(iterations)
         .build();
 
-    Quad data = fractalService.create(fractal);
+    Quad data = fractalService.autostop(fractal);
     return Response.ok().entity(data).build();
   }
 
@@ -132,16 +123,11 @@ public class FractalService {
         .minIterations(minIterations)
         .threshold(threshold)
         .build();
-    Quad data;
-    if (iterations != -1) {
-    	data = fractalService.create(fractal);
-    } else {
-    	data = fractalService.autostop(fractal);
-    }
-    LongQuad longQuad = LongQuad.builder().name("Ingo").build();
+    Quad data = fractalService.autostop(fractal);
+    LongQuad longQuad = LongQuad.builder().build();
     for (int x = 0; x < data.getWidth(); x++) {
       for (int y = 0; y < data.getWidth(); y++) {
-        longQuad.setXY(x, y, Math.round(data.getData()[x][y]));
+        longQuad.setXY(x, y, data.getData()[x][y]);
       }
     }
     Response response = Response.ok().entity(longQuad).build();
@@ -164,7 +150,7 @@ public class FractalService {
         .iterations(iterations)
         .build();
 
-    Quad data = fractalService.create(fractal);
+    Quad data = fractalService.autostop(fractal);
     // LongQuad longQuad = new LongQuad();
     // for (int x = 0; x < data.getWidth(); x++) {
     // for (int y = 0; y < data.getWidth(); y++) {
